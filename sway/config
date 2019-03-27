@@ -10,7 +10,7 @@ set $right l
 set $term KITTY_ENABLE_WAYLAND=1 kitty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec
+set $menu j4-dmenu-desktop --dmenu="bemenu -i" --no-generic --term=kitty
 
 ### Output configuration
 #
@@ -60,9 +60,6 @@ output * bg /usr/share/backgrounds/sway/huawei_matebook_x_pro_wall_technastic_04
 
     # kill focused window
     bindsym $mod+Shift+q kill
-
-    # start your launcher
-    bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -148,7 +145,7 @@ output * bg /usr/share/backgrounds/sway/huawei_matebook_x_pro_wall_technastic_04
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # move focus to the parent container
     bindsym $mod+a focus parent
@@ -191,7 +188,7 @@ bindsym $mod+r mode "resize"
 
 font "SF Pro Display"
 
-xwayland disable
+# xwayland disable
 focus_follows_mouse no
 
 # bar

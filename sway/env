@@ -7,3 +7,4 @@ QT_WAYLAND_FORCE_DPI=physical
 ECORE_EVAS_ENGINE=wayland_egl
 ELM_ENGINE=wayland_egl
 SDL_VIDEODRIVER=wayland
+GDK_SCALE=2

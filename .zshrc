@@ -1,3 +1,10 @@
+CLUTTER_BACKEND=wayland
+QT_QPA_PLATFORM=wayland-egl
+QT_WAYLAND_FORCE_DPI=physical
+ECORE_EVAS_ENGINE=wayland_egl
+ELM_ENGINE=wayland_egl
+_JAVA_AWT_WM_NONREPARENTING=1
+
 ## Options section
 setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
