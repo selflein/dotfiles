@@ -1,2 +1,0 @@
-exec libinput-gestures -d
-exec bash -c "sleep 5 && dropbox"
