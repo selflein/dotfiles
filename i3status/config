@@ -6,25 +6,40 @@
 # ß
 # If the above line is not correctly displayed, fix your editor first!
 
-general {
-	output_format = "i3bar"
-        colors = true
-        interval = 5
-	separator = false
+py3status {
+	#align = 'left'
+   	markup = 'pango'
+   	#min_width = 20
+   	#separator = True
+   	#separator_block_width = 9
+
+    	background = '#000000'
+   	border = '#000000'
+   	border_bottom = 1
+   	border_left = 1
+   	border_right = 1
+   	border_top = 1
+
+	color_bad = '#ffffff'
+	color_degraded = '#ffffff'
+	
+
+   	#min_length = 15
+   	position = 'right'
 }
 
-# order += "ipv6"
-order += "volume master"
-# order += "disk /"
-order += "wireless _first_"
-order += "ethernet _first_"
-order += "battery all"
-# order += "load"
-order += "tztime local"
+order += "xrandr"
+order += "volume_status"
+order += "bluetooth"
+order += "wifi"
+order += "battery_level"
+order += "time"
 
-wireless _first_ {
-        format_up = "%quality"
-        format_down = ""
+wifi {
+        blocks = " "
+	format = "[{icon}]"
+	on_click 1 = "exec sh nmtui"
+	
 }
 
 ethernet _first_ {
@@ -33,35 +48,35 @@ ethernet _first_ {
         format_down = ""
 }
 
-battery all {
-        format = "%status %percentage"
-	status_chr = ""
-	status_bat = ""
-	status_full = ""
-	low_threshold = 20
-	format_down = ""
-	hide_seconds = true
-	integer_battery_capacity = true
+battery_level {
+	battery_id = "all"
+        format = "{icon} {percent}%"
+	charging_character = ""
+	blocks = ""
 }
 
-tztime local {
-        format = "%d.%m.%Y \ \  %H:%M"
+time {
+        format = "%d.%m.%Y    %H:%M"
 }
 
-load {
-        format = "%1min"
+volume_status {
+	command = "pactl"
+	button_mute = "3"
+	format = " {percentage}%"
+	format_muted = ""
+	max_volume = "100"
+	on_click 1 = "exec pavucontrol"
 }
 
-disk "/" {
-        format = " %avail"
+xrandr {
+	hide_if_single_combination = True
+	DP2_pos = "right-of eDP1"
+	eDP1_primary = True 
+	DP2_workspaces = "1,2,3"
 }
 
-volume master {
-        format = " %volume"
-        format_muted = ""
-        device = "default"
-        mixer = "Master"
-        mixer_idx = 0
+bluetooth {
+	format = "[ {format_device}]"
+	format_device = "[{name}]"
+	color_bad = "hidden"
 }
-
-

@@ -193,14 +193,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# py3status bar
 bar {
 	position top
 	separator_symbol " "
 	font pango:SF Pro Display 9, Awesome 9
 	tray_output primary
-        status_command i3status
+        status_command py3status 
 }
 
 # autostart
@@ -208,5 +207,5 @@ exec libinput-gestures
 exec --no-startup-id dropbox 
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpapers/bg.png
+exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/bg.png
 exec --no-startup-id xautolock -time 1 -locker 'i3lock -d -c 000000 & sleep 60 && xset dpms force off'
