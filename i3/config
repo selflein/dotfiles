@@ -39,8 +39,8 @@ font pango:SF Pro Display 8
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up j
-set $down k
+set $up k
+set $down j
 set $left h
 set $right l
 
@@ -207,5 +207,6 @@ exec libinput-gestures
 exec --no-startup-id dropbox 
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
-exec --no-startup-id feh --bg-fill ~/.config/i3/wallpapers/bg.png
-exec --no-startup-id xautolock -time 1 -locker 'i3lock -d -c 000000 & sleep 60 && xset dpms force off'
+exec --no-startup-id randrctl auto
+exec --no-startup-id xautolock -time 3 -locker 'i3lock -d -c 000000 & sleep 60 && xset dpms force off'
+exec --no-startup-id sleep 5 && nitrogen --restore &

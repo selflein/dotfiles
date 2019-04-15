@@ -28,7 +28,6 @@ py3status {
    	position = 'right'
 }
 
-order += "xrandr"
 order += "volume_status"
 order += "bluetooth"
 order += "wifi"
@@ -38,8 +37,6 @@ order += "time"
 wifi {
         blocks = " "
 	format = "[{icon}]"
-	on_click 1 = "exec sh nmtui"
-	
 }
 
 ethernet _first_ {
@@ -66,13 +63,6 @@ volume_status {
 	format_muted = ""
 	max_volume = "100"
 	on_click 1 = "exec pavucontrol"
-}
-
-xrandr {
-	hide_if_single_combination = True
-	DP2_pos = "right-of eDP1"
-	eDP1_primary = True 
-	DP2_workspaces = "1,2,3"
 }
 
 bluetooth {
