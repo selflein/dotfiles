@@ -3,7 +3,7 @@
 * For regular X11/i3 setup
 	* `i3-gaps`
 	* `i3-lock`
-	* `py3status`
+	* `polybar`
 	* `dunst`
 	* `xautolock`
 	* `autorandr`
@@ -15,3 +15,5 @@
 * Fonts
 	* `San Francisco OTF`
 	* `Source Code Pro OTF`
+	* `Font Awesome 5`
+	* `Material Icons`

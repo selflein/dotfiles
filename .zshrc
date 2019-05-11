@@ -1,9 +1,12 @@
-CLUTTER_BACKEND=wayland
-QT_QPA_PLATFORM=wayland-egl
-QT_WAYLAND_FORCE_DPI=physical
-ECORE_EVAS_ENGINE=wayland_egl
-ELM_ENGINE=wayland_egl
-_JAVA_AWT_WM_NONREPARENTING=1
+#CLUTTER_BACKEND=wayland
+#QT_QPA_PLATFORM=wayland-egl
+#QT_WAYLAND_FORCE_DPI=physical
+#ECORE_EVAS_ENGINE=wayland_egl
+#ELM_ENGINE=wayland_egl
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export XDG_CURRENT_DESKTOP=kde
+export DESKTOP_SESSION=kde
 
 ## Options section
 setopt correct                                                  # Auto correct mistakes

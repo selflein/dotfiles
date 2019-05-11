@@ -57,7 +57,8 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i" --term="kitty"
+bindsym $mod+d exec rofi -show combi 
+# bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i" --term="kitty"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -194,25 +195,28 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+p exec autorandr -c && sleep 3 && nitrogen --restore &
-bindsym $mod+Shift+y exec xautolock -toggle
+bindsym $mod+Shift+y exec "xautolock -toggle && dunstify Autolock 'Toggled autolock.'"
 bindsym $mod+y exec xautolock -locknow
+bindsym alt+space exec "albert toggle && wmctl -a 'albert - Albert'"
 
-# py3status bar
-bar {
-	position top
-	separator_symbol " "
-	font pango:SF Pro Display 9, Awesome 9
-	tray_output primary
-	i3bar_command i3bar -t
-        status_command py3status -t 1 
-}
-
+for_window [class="^.*"] border pixel 4
+for_window [class="albert" instance="albert"] border none
+gaps inner 2
 
 # autostart
-exec --no-startup-id dunst
+exec --no-startup-id /usr/lib/notify-osd/notify-osd
+exec --no-startup-id compton
+exec --no-startup-id QT_SCALE_FACTOR=2 albert
+# exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id libinput-gestures
 exec --no-startup-id dropbox 
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
-exec --no-startup-id xautolock -time 3 -locker 'i3lock -d -c 000000'
-exec --no-startup-id autorandr -c && sleep 2 && nitrogen --restore &
+exec --no-startup-id xautolock -time 3 \
+	-locker 'i3lock -d --color 999999 --show-failed-attempts --ignore-empty-password' \
+	-notify 30 -notifier 'dunstify Autolock "Screen is locking in 30 seconds."' \
+	-killer 'systemctl suspend' -killtime 20 -noclose &> /tmp/xautolock
+
+# on reload
+exec_always --no-startup-id autorandr -c && sleep 2 && nitrogen --restore &
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
