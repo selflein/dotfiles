@@ -1,16 +1,4 @@
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
-
 focus_follows_mouse no
-
 
 # volume control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
@@ -26,17 +14,6 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 # is used in the bar {} block below.
 font pango:SF Pro Display 8
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn't scale on retina/hidpi displays.
-
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -46,7 +23,6 @@ set $right l
 
 set $mod Mod4
 
-bindsym $mod+control+l exec --no-startup-id i3lock -c 000000 & sleep 4 && xset dpms force off
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier Mod4
 
@@ -58,11 +34,6 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show combi 
-# bindsym $mod+d exec j4-dmenu-desktop --dmenu="dmenu -i" --term="kitty"
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+$left focus left
@@ -113,7 +84,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -123,7 +94,6 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -169,12 +139,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym $left       resize shrink width 10 px or 10 ppt
         bindsym $down       resize grow height 10 px or 10 ppt
         bindsym $up         resize shrink height 10 px or 10 ppt
@@ -194,7 +158,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+p exec autorandr -c && sleep 3 && nitrogen --restore &
+bindsym $mod+p exec autorandr -l laptop && sleep 3 && nitrogen --restore &
 bindsym $mod+Shift+y exec "xautolock -toggle && dunstify Autolock 'Toggled autolock.'"
 bindsym $mod+y exec xautolock -locknow
 bindsym alt+space exec "albert toggle && wmctl -a 'albert - Albert'"
@@ -207,9 +171,8 @@ gaps inner 2
 exec --no-startup-id /usr/lib/notify-osd/notify-osd
 exec --no-startup-id compton
 exec --no-startup-id QT_SCALE_FACTOR=2 albert
-# exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
+exec --no-startup-id dropbox
 exec --no-startup-id libinput-gestures
-exec --no-startup-id dropbox 
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id xautolock -time 3 \
