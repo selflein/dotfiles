@@ -1,13 +1,23 @@
 focus_follows_mouse no
 
+# class                 border  backgr. text    indicator child_border
+client.focused          #000000 #ffffff #000000 #888888   #ffffff
+client.focused_inactive #000000 #ffffff #000000 #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+ 
+client.background       #000000
+
+
 # volume control
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5%
 bindsym XF86AudioMute exec pactl set-sink-mute $(pacmd list-sinks |awk '/* index:/{print $3}') toggle
 
 # brightness control
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -27,7 +37,7 @@ set $mod Mod4
 floating_modifier Mod4
 
 # start a terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -158,28 +168,40 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bar {	
+	colors {
+		background #111111
+		statusline #ffffff
+	}
+	position top
+	separator_symbol " "
+	font pango:SF Pro Display 9, Awesome 9
+	tray_output primary
+	# i3bar_command i3bar -t
+        status_command i3status
+}
+
+
 bindsym $mod+p exec autorandr -l laptop && sleep 3 && nitrogen --restore &
-bindsym $mod+Shift+y exec "xautolock -toggle && dunstify Autolock 'Toggled autolock.'"
+bindsym $mod+Shift+y exec "xautolock -toggle && notify-send Autolock 'Toggled autolock.'"
 bindsym $mod+y exec xautolock -locknow
-bindsym alt+space exec "albert toggle && wmctl -a 'albert - Albert'"
 
 for_window [class="^.*"] border pixel 4
-for_window [class="albert" instance="albert"] border none
 gaps inner 2
 
 # autostart
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pasystray
+exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib/notify-osd/notify-osd
 exec --no-startup-id compton
-exec --no-startup-id QT_SCALE_FACTOR=2 albert
 exec --no-startup-id dropbox
 exec --no-startup-id libinput-gestures
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
-exec --no-startup-id xautolock -time 3 \
-	-locker 'i3lock -d --color 999999 --show-failed-attempts --ignore-empty-password' \
-	-notify 30 -notifier 'dunstify Autolock "Screen is locking in 30 seconds."' \
-	-killer 'systemctl suspend' -killtime 20 -noclose &> /tmp/xautolock
+exec --no-startup-id xautolock -time 5 \
+	-locker 'i3lock -d --color 222222 --show-failed-attempts --ignore-empty-password' \
 
 # on reload
 exec_always --no-startup-id autorandr -c && sleep 2 && nitrogen --restore &
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
