@@ -21,7 +21,9 @@
 #### Optional desktop utilities
 * `xfce4-power-manager` (For shutting of screen and suspending after some time)
 * `nm-applet` (Managing network configuration from tray)
-* `pasystray` (Volume control from tray)
+* `pnmixer` (Volume control from tray)
+* `gnome-flashback` (Integrates gnome functionality such as keyboard layout applet)   
+  Run gnome settings with: `XDG_CURRENT_DESKTOP=GNOME gnome-control-center`
 
 #### Theming
 First install the adwaita themes for QT and GTK applications from apt.

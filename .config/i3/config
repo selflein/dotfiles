@@ -199,21 +199,22 @@ bar {
     status_command i3status
 }
 
-
 bindsym $mod+p exec autorandr -l laptop && sleep 3 && nitrogen --restore &
 bindsym $mod+Shift+y exec "xautolock -toggle && notify-send Autolock 'Toggled autolock.'"
 bindsym $mod+y exec xautolock -locknow
 
 for_window [class="^.*"] border pixel 4
+for_window [class="Pavucontrol"] floating enable
 
 # autostart
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pasystray
+exec --no-startup-id pnmixer 
 exec --no-startup-id nm-applet
 exec --no-startup-id compton --inactive-dim 0.15
 exec --no-startup-id libinput-gestures
 exec --no-startup-id redshift
 exec --no-startup-id xautolock -time 5 -detectsleep -locker $Locker
 exec --no-startup-id nextcloud 
+exec --no-startup-id gnome-flashback
 
 exec_always --no-startup-id autorandr -c; sleep 2 && nitrogen --restore
