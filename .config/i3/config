@@ -196,7 +196,7 @@ bar {
 	font pango:SF Pro Display 9, Awesome 9
 	tray_output primary
 	# i3bar_command i3bar -t
-        status_command i3status
+    status_command i3status
 }
 
 
@@ -205,18 +205,15 @@ bindsym $mod+Shift+y exec "xautolock -toggle && notify-send Autolock 'Toggled au
 bindsym $mod+y exec xautolock -locknow
 
 for_window [class="^.*"] border pixel 4
-gaps inner 2
 
 # autostart
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pasystray
 exec --no-startup-id nm-applet
-exec --no-startup-id /usr/lib/notify-osd/notify-osd
 exec --no-startup-id compton --inactive-dim 0.15
 exec --no-startup-id libinput-gestures
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift
 exec --no-startup-id xautolock -time 5 -detectsleep -locker $Locker
 exec --no-startup-id nextcloud 
 
-exec_always --no-startup-id autorandr -c && sleep 2 && nitrogen --restore
+exec_always --no-startup-id autorandr -c; sleep 2 && nitrogen --restore
