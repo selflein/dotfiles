@@ -1,6 +1,32 @@
+" Plugins using vim-plug
+call plug#begin('~/.vim/plugged')
+
+" Files sidebar 
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Status line theme
+Plug 'itchyny/lightline.vim'
+
+" Fuzzy finder for files
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Syntax checker
+Plug 'w0rp/ale'
+
+" Theme
+Plug 'morhetz/gruvbox'
+
+" Git support
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set termguicolors
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -97,12 +123,14 @@ set number
 " Enable syntax highlighting
 syntax enable 
 
+" Colorscheme
+let g:gruvbox_contrast_dark="hard"
+set background=dark
 try
-    colorscheme desert
+    colorscheme gruvbox
 catch
 endtry
 
-set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -154,13 +182,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -213,15 +234,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Always show the status line
 set laststatus=2
 
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
@@ -262,6 +277,15 @@ map <leader>x :e ~/buffer.md<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+let g:lightline = {
+  \     'active': {
+  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+  \         'right': [['lineinfo'], ['percent'], ['gitbranch', 'fileformat', 'fileencoding']]
+  \     },
+  \     'component_function': {
+  \         'gitbranch': 'gitbranch#name'
+  \     }
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

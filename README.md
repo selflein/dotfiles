@@ -45,6 +45,16 @@ Install zsh shell first.
 Then, install antigen using `curl -L git.io/antigen > ~/.antigen.zsh`. When the terminal is loaded packages specified in `.zshrc` should be installed.   
 See the [antigen](https://github.com/zsh-users/antigen#installation) documentation for additional information.
 
+#### Vim configuration using vim-plug
+* Install vim-plug
+   ```
+   curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   ```
+* Run `:PlugInstall` to install plugins specified in `.vimrc`
+
+For more information see [vim-plug documentation](https://github.com/junegunn/vim-plug).
+
 #### Environment variables
 Environment variables are contained in the `pam_environment` file. Format is `{key}={value}`.
 
