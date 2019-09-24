@@ -36,7 +36,7 @@ set $mod Mod4
 floating_modifier Mod4
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -198,6 +198,16 @@ bar {
 	# i3bar_command i3bar -t
     status_command i3status
 }
+
+set $primary_monitor "DP-1.1"
+set $secondary_monitor "DP-0"
+
+workspace $ws1 output $primary_monitor
+workspace $ws2 output $primary_monitor
+workspace $ws3 output $primary_monitor
+workspace $ws4 output $primary_monitor
+workspace $ws5 output $primary_monitor
+workspace $ws6 output $secondary_monitor
 
 bindsym $mod+p exec autorandr -l laptop && sleep 3 && nitrogen --restore &
 bindsym $mod+Shift+y exec "xautolock -toggle && notify-send Autolock 'Toggled autolock.'"
