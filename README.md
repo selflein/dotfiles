@@ -41,12 +41,14 @@ Set themes for GTK and QT with the following packages
 * `fonts-font-awesome`
 
 ### Install fzf
+**Not necessary anymore since this is handled by vim-plug**
 Run the following commands:
 ```
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --no-update-rc --64
+~/.fzf/install --all
 ```
 The project website can be found [here](https://github.com/junegunn/fzf).
+Update with `cd ~/.fzf && git pull && ./install --all`
 
 #### zsh shell with Zplugin
 Install zsh shell first.
