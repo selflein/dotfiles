@@ -42,6 +42,7 @@ Set themes for GTK and QT with the following packages
 
 ### Install fzf
 **Not necessary anymore since this is handled by vim-plug**
+
 Run the following commands:
 ```
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
