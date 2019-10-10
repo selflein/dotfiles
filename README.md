@@ -40,10 +40,18 @@ Set themes for GTK and QT with the following packages
 * Main: `fonts-roboto`
 * `fonts-font-awesome`
 
-#### zsh Shell
+### Install fzf
+Run the following commands:
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --no-update-rc --64
+```
+The project website can be found [here](https://github.com/junegunn/fzf).
+
+#### zsh shell with Zplugin
 Install zsh shell first.
-Then, install antigen using `curl -L git.io/antigen > ~/.antigen.zsh`. When the terminal is loaded packages specified in `.zshrc` should be installed.   
-See the [antigen](https://github.com/zsh-users/antigen#installation) documentation for additional information.
+Then, install Zplugin using `sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"`. When the terminal is loaded packages specified in `.zshrc` should be installed.   
+See the [Zplugin](https://github.com/zdharma/zplugin) documentation for additional information.
 
 #### Vim configuration using vim-plug
 * Install vim-plug

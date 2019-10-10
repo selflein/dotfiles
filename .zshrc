@@ -1,24 +1,21 @@
-source ~/.antigen.zsh 
+source '/home/sven/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+zplugin light zsh-users/zsh-autosuggestions
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle heroku
-antigen bundle pip
-antigen bundle lein
-antigen bundle command-not-found
+# zplugin light MichaelAquilina/zsh-auto-notify 
+zplugin light zdharma/fast-syntax-highlighting
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+# block traditional way of syntax highlighting
+zplugin ice blockf
+zplugin light zsh-users/zsh-completions
 
-antigen bundle zsh-users/zsh-autosuggestions
+zplugin ice depth=1
+zplugin light romkatv/powerlevel10k
 
-# Load the theme.
-antigen theme robbyrussell
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Tell Antigen that you're done.
-antigen apply
-
-
+HISTFILE=~/.zsh_history
