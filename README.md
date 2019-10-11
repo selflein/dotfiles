@@ -66,6 +66,12 @@ See the [Zplugin](https://github.com/zdharma/zplugin) documentation for addition
 
 For more information see [vim-plug documentation](https://github.com/junegunn/vim-plug).
 
+#### Tmux configuration using TPM
+For install run `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`.
+
+See [github page](https://github.com/tmux-plugins/tpm) for more instructions.
+Run `:Tmuxline lightline_visual` in a vim window in tmux to apply the color scheme ([github page](https://github.com/edkolev/tmuxline.vim)).
+
 #### Environment variables
 Environment variables are contained in the `pam_environment` file. Format is `{key}={value}`.
 

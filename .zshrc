@@ -7,7 +7,7 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light marzocchi/zsh-notify 
 zplugin light zdharma/fast-syntax-highlighting
 
-# block traditional way of syntax highlighting
+# block traditional way of syntax completion
 zplugin ice blockf
 zplugin light zsh-users/zsh-completions
 
@@ -32,3 +32,15 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
 
+setopt auto_menu
+setopt always_to_end
+setopt complete_in_word
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# General environment variables 
+# Put other environment variables into .zshenv
+export EDITOR="nvim"
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
