@@ -4,7 +4,7 @@ autoload -Uz _zplugin
 
 zplugin light zsh-users/zsh-autosuggestions
 
-# zplugin light MichaelAquilina/zsh-auto-notify 
+zplugin light marzocchi/zsh-notify 
 zplugin light zdharma/fast-syntax-highlighting
 
 # block traditional way of syntax highlighting
@@ -32,4 +32,3 @@ setopt hist_verify            # show command with history expansion to user befo
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
 
-source ~/.profile
