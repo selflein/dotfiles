@@ -1,4 +1,4 @@
-source '/home/sven/.zplugin/bin/zplugin.zsh'
+source ~/.zplugin/bin/zplugin.zsh
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
@@ -7,12 +7,12 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light marzocchi/zsh-notify 
 zplugin light zdharma/fast-syntax-highlighting
 
+zplugin ice depth=1
+zplugin light romkatv/powerlevel10k
+
 # block traditional way of syntax completion
 zplugin ice blockf
 zplugin light zsh-users/zsh-completions
-
-zplugin ice depth=1
-zplugin light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
@@ -41,6 +41,6 @@ bindkey "^[[1;5D" backward-word
 
 # General environment variables 
 # Put other environment variables into .zshenv
-export EDITOR="nvim"
+export EDITOR="vim"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
