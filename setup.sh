@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set +e
 
 SCRIPT_PATH=$(dirname $(realpath -s $0))
 
@@ -33,6 +32,4 @@ mkdir ~/.zplugin
 git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
 exec zsh
 source ~/.zshrc
-zplugin self-update || true
-
-
+zplugin update --all
