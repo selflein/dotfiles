@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH=$(dirname $(realpath -s $0))
-
-apt-get update
-
-apt-get install -y silversearcher-ag
-apt-get install -y tmux
-apt-get install -y zsh
-apt-get install -y vim
-
-apt-get install -y stow
 stow -d $SCRIPT_PATH -t ~ --stow . --ignore='setup.sh'
 
 
