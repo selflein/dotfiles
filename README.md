@@ -24,6 +24,7 @@
 * `pnmixer` (Volume control from tray)
 * `gnome-flashback` (Integrates gnome functionality such as keyboard layout applet)   
   Run gnome settings with: `XDG_CURRENT_DESKTOP=GNOME gnome-control-center`
+* `blueman` (Manage bluetooth connections with tray applet)
 
 #### Theming
 First install the adwaita themes for QT and GTK applications from apt.
@@ -39,6 +40,10 @@ Set themes for GTK and QT with the following packages
 * Monospace: `fonts-firacode`
 * Main: `fonts-roboto`
 * `fonts-font-awesome`
+
+### Other tools
+* [fd](https://github.com/sharkdp/fd) (Simple alternative to `find`)
+* [ripgrep](https://github.com/BurntSushi/ripgrep) (Search regex patterns in directory)
 
 ### Install fzf
 **Not necessary anymore since this is handled by vim-plug**

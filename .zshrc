@@ -63,3 +63,4 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .cache -g ""'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --preview "cat {} | head -20" --preview-window right'
 
 alias ls='ls --color=auto'
+alias open='xdg-open'

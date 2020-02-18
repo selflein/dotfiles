@@ -1,4 +1,6 @@
 focus_follows_mouse no
+focus_on_window_activation urgent
+hide_edge_borders smart
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #000000 #ffffff #000000 #888888   #ffffff
@@ -36,14 +38,14 @@ set $mod Mod4
 floating_modifier Mod4
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show combi
-bindsym $mod+Tab exec rofi -show window
+bindsym $mod+d exec "rofi -combi-modi drun,run,window -show combi -modi combi"
+bindsym $mod+Tab exec "rofi -show window"
 
 # change focus
 bindsym $mod+$left focus left
@@ -145,8 +147,6 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -183,7 +183,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+y mode "$mode_system"
+bindsym $mod+Shift+e mode "$mode_system"
 
 
 bar {	
@@ -199,21 +199,26 @@ bar {
     status_command i3status
 }
 
-bindsym $mod+p exec autorandr -l laptop && sleep 3 && nitrogen --restore &
+bindsym $mod+Shift+s sticky toggle
+bindsym $mod+p exec "autorandr -c --skip-options crtc,gamma; sleep 3 && nitrogen --restore &"
 bindsym $mod+Shift+y exec "xautolock -toggle && notify-send Autolock 'Toggled autolock.'"
+bindsym $mod+Print exec gnome-screenshot -i
 
-for_window [class="^.*"] border pixel 4
+for_window [class="^.*"] border pixel 2
 for_window [class="Pavucontrol"] floating enable
 
 # autostart
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pnmixer 
 exec --no-startup-id nm-applet
-exec --no-startup-id compton --inactive-dim 0.15
+exec --no-startup-id picom --inactive-dim 0.15 --backend glx --config /dev/null 
 exec --no-startup-id libinput-gestures
 exec --no-startup-id redshift
 exec --no-startup-id xautolock -time 5 -detectsleep -locker $Locker
 exec --no-startup-id nextcloud 
+exec --no-startup-id dunst 
+exec --no-startup-id blueman-applet 
+exec --no-startup-id xfce4-terminal --drop-down 
 
-exec_always --no-startup-id gnome-flashback 
-exec_always --no-startup-id sleep 2 && autorandr -c; sleep 2 && nitrogen --restore
+exec_always --no-startup-id setxkbmap -option caps:swapescape
+exec_always --no-startup-id "sleep 2 && autorandr -c --skip-options crtc,gamma; sleep 2 && nitrogen --restore"

@@ -10,7 +10,7 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu j4-dmenu-desktop --dmenu="bemenu -i" --no-generic --term=kitty
+set $menu wofi --dmenu -I -m -i
 
 ### Output configuration
 #
@@ -187,7 +187,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 font "SF Pro Display"
-
+xwayland disable
 # xwayland disable
 focus_follows_mouse no
 
