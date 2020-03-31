@@ -187,11 +187,19 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 
 bar {	
-	colors {
-		background #000000
-		statusline #ffffff
-	}
-	position top
+    colors {
+        background #000000
+        statusline #FFFFFF
+        separator  #FFFFFF
+        
+        # border, background, text
+        focused_workspace  #FFFFFF #FFFFFF #000000
+        active_workspace   #000000 #222222 #FFFFFF
+        inactive_workspace #000000 #000000 #FFFFFF
+        urgent_workspace   #000000 #900000 #FFFFFF
+        binding_mode       #000000 #900000 #FFFFFF
+    }
+    position top
 	separator_symbol " "
 	font pango:SF Pro Display 9, Awesome 9
 	tray_output primary
@@ -211,14 +219,12 @@ for_window [class="Pavucontrol"] floating enable
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pnmixer 
 exec --no-startup-id nm-applet
-exec --no-startup-id picom --inactive-dim 0.15 --backend glx --config /dev/null 
+exec --no-startup-id picom --inactive-dim 0.10 --config /dev/null 
 exec --no-startup-id libinput-gestures
 exec --no-startup-id redshift
 exec --no-startup-id xautolock -time 5 -detectsleep -locker $Locker
 exec --no-startup-id nextcloud 
 exec --no-startup-id dunst 
 exec --no-startup-id blueman-applet 
-exec --no-startup-id xfce4-terminal --drop-down 
 
-exec_always --no-startup-id setxkbmap -option caps:swapescape
 exec_always --no-startup-id "sleep 2 && autorandr -c --skip-options crtc,gamma; sleep 2 && nitrogen --restore"
