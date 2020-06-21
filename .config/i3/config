@@ -44,7 +44,7 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -combi-modi drun,run,window -show combi -modi combi"
+bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run,window -show combi -modi combi"
 bindsym $mod+Tab exec "rofi -show window"
 
 # change focus
@@ -201,7 +201,7 @@ bar {
     }
     position top
 	separator_symbol " "
-	font pango:SF Pro Display 9, Awesome 9
+	font pango:SF Pro Display 9, FontAwesome 9
 	tray_output primary
 	# i3bar_command i3bar -t
     status_command i3status

@@ -1,38 +1,22 @@
-autoload -Uz compinit
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
-  compinit -i
-else
-  compinit -C -i
-fi
-zmodload -i zsh/complist
+source ~/.zinit/bin/zinit.zsh
 
-zstyle ':completion:*' menu select # select completions with arrow keys
-zstyle ':completion:*' group-name '' # group results by category
-zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
+# Install xdotool and wmctrl for `zsh-notify` to work
+zinit wait lucid for \
+    marzocchi/zsh-notify \
+    Aloxaf/fzf-tab \
+    agkozak/zsh-z
 
-source ~/.zplugin/bin/zplugin.zsh
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+zinit ice depth=1 atload'!source ~/.p10k.zsh' lucid nocd
+zinit light romkatv/powerlevel10k
 
-autoload -Uz compinit
-compinit
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    blockf atpull"zinit creinstall -q ." \
+        zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
 
-zplugin light zsh-users/zsh-autosuggestions
-
-zplugin light marzocchi/zsh-notify 
-
-zplugin ice depth=1
-zplugin light romkatv/powerlevel10k
-
-# block traditional way of syntax completion
-zplugin ice blockf
-zplugin light zsh-users/zsh-completions
-
-zplugin light zdharma/fast-syntax-highlighting
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
@@ -60,7 +44,8 @@ bindkey "^[[1;5D" backward-word
 # Put other environment variables into .zshenv
 export EDITOR="vim"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .cache -g ""'
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --preview "cat {} | head -20" --preview-window right'
+# export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 alias ls='ls --color=auto'
 alias open='xdg-open'
+alias fd='fdfind'
