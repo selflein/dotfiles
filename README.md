@@ -11,20 +11,21 @@
 * `i3`
 * `i3lock` (installed with `i3` using apt)
 * `dunst` (installed with `i3` using apt)
-* `xautolock`
 * `autorandr`
 * `redshift`
 * `rofi`
-* `compton`
-* `konsole`
+* `picom`
+* `xfce4-terminal`
 
 #### Optional desktop utilities
-* `xfce4-power-manager` (For shutting of screen and suspending after some time)
+* `xfce4-power-manager` (For shutting off screen and suspending after some time)
 * `nm-applet` (Managing network configuration from tray)
 * `pnmixer` (Volume control from tray)
 * `gnome-flashback` (Integrates gnome functionality such as keyboard layout applet)   
   Run gnome settings with: `XDG_CURRENT_DESKTOP=GNOME gnome-control-center`
 * `blueman` (Manage bluetooth connections with tray applet)
+* `copyq` (Clipboard manager)
+* `xfce4-screensaver` (Lock screen)
 
 #### Theming
 First install the adwaita themes for QT and GTK applications from apt.

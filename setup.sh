@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SCRIPT_PATH=$(dirname $(realpath -s $0))
-stow -d $SCRIPT_PATH -t ~ --stow . --ignore='setup.sh'
+stow -d $SCRIPT_PATH -t ~ --stow . --ignore='setup.sh, setup_remote.sh'
 
 
 # Vim

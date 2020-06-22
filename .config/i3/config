@@ -169,15 +169,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-set $Locker 'i3lock -d -c 555555 --show-failed-attempts --ignore-empty-password && sleep 1'
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id xautolock -locknow, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id xautolock -locknow && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id xautolock -locknow && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym l exec xfce4-screensaver-command --lock, mode "default"
+    bindsym e exec i3-msg exit, mode "default"
+    bindsym s exec systemctl suspend, mode "default"
+    bindsym h exec systemctl hibernate, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
+    bindsym Shift+s exec systemctl poweroff -i, mode "default"  
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -196,8 +195,8 @@ bar {
         focused_workspace  #FFFFFF #FFFFFF #000000
         active_workspace   #000000 #222222 #FFFFFF
         inactive_workspace #000000 #000000 #FFFFFF
-        urgent_workspace   #000000 #900000 #FFFFFF
-        binding_mode       #000000 #900000 #FFFFFF
+        urgent_workspace   #900000 #900000 #FFFFFF
+        binding_mode       #900000 #900000 #FFFFFF
     }
     position top
 	separator_symbol " "
@@ -209,22 +208,31 @@ bar {
 
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+p exec "autorandr -c --skip-options crtc,gamma; sleep 3 && nitrogen --restore &"
-bindsym $mod+Shift+y exec "xautolock -toggle && notify-send Autolock 'Toggled autolock.'"
-bindsym $mod+Print exec gnome-screenshot -i
+bindsym $mod+Shift+p exec "autorandr horizontal; sleep 3 && nitrogen --restore &"
+bindsym $mod+Print exec "flameshot gui"
 
-for_window [class="^.*"] border pixel 2
+# dropdown terminal
+exec --no-startup-id "xfce4-terminal --dynamic-title-mode=none --initial-title=scratchpad -x tmux"
+for_window [class="Xfce4-terminal" title="scratchpad"] move scratchpad
+bindsym $mod+t [class="Xfce4-terminal" title="scratchpad"] scratchpad show
+
+for_window [class="^.*"] border pixel 1
 for_window [class="Pavucontrol"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="copyq"] floating enable
 
 # autostart
 exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xfce4-screensaver
+exec --no-startup-id xfsettingsd
 exec --no-startup-id pnmixer 
 exec --no-startup-id nm-applet
 exec --no-startup-id picom --inactive-dim 0.10 --config /dev/null 
 exec --no-startup-id libinput-gestures
 exec --no-startup-id redshift
-exec --no-startup-id xautolock -time 5 -detectsleep -locker $Locker
 exec --no-startup-id nextcloud 
-exec --no-startup-id dunst 
 exec --no-startup-id blueman-applet 
+exec --no-startup-id copyq
 
 exec_always --no-startup-id "sleep 2 && autorandr -c --skip-options crtc,gamma; sleep 2 && nitrogen --restore"
