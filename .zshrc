@@ -1,10 +1,10 @@
 source ~/.zinit/bin/zinit.zsh
 
-# Install xdotool and wmctrl for `zsh-notify` to work
+# Install xdotool, notify-osd and wmctrl for `zsh-notify` to work
 zinit wait lucid for \
-    marzocchi/zsh-notify \
     Aloxaf/fzf-tab \
     agkozak/zsh-z
+    # marzocchi/zsh-notify \
 
 zinit ice depth=1 atload'!source ~/.p10k.zsh' lucid nocd
 zinit light romkatv/powerlevel10k
@@ -49,3 +49,4 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .cache -g ""'
 alias ls='ls --color=auto'
 alias open='xdg-open'
 alias fd='fdfind'
+

@@ -1,2 +1,7 @@
 exec redshift
+exec mako
+exec libinput-gestures
+exec blueman-applet
+exec nextcloud
+
 

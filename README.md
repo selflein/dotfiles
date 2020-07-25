@@ -87,3 +87,18 @@ Environment variables are contained in the `pam_environment` file. Format is `{k
 Currently not really using it because of xwayland issues with scaling.
 * `sway`
 * `waybar`
+* `kanshi`
+* `wdisplays`
+* `mako`
+* `blueberry`
+* `autotiling` (via python)
+* `swayidle`
+* `swaylock`
+* `rofi`
+* `alacritty`
+* `slurp`
+* `grim`
+* `swappy`
+* `clipman`
+
+
