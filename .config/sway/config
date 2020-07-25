@@ -1,5 +1,5 @@
 font pango:Fira Sans 10, pango: Font Awesome 10
-xwayland enable
+xwayland force
 focus_follows_mouse no
 focus_on_window_activation urgent
 hide_edge_borders smart
