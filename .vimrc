@@ -8,7 +8,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy finder for files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.cache/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Theme
@@ -25,6 +25,7 @@ call plug#end()
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set termguicolors
+set clipboard+=unnamedplus
 
 " Sets how many lines of history VIM has to remember
 set history=500

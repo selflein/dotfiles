@@ -1,7 +1,5 @@
-exec redshift
-exec mako
-exec libinput-gestures
-exec blueman-applet
+exec mako > /tmp/mako.log 2>&1
+exec "nm-applet --indicator"
 exec nextcloud
-
+exec libinput-gestures
 

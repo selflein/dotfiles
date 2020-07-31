@@ -2,12 +2,16 @@ font pango:Fira Sans 10, pango: Font Awesome 10
 xwayland force
 focus_follows_mouse no
 focus_on_window_activation urgent
+workspace_auto_back_and_forth yes
 hide_edge_borders smart
 smart_gaps on
 default_border pixel 2
+default_floating_border pixel 2
+default_orientation auto
 
 set $mod Mod4
-set $lock 'swaylock -f -c 000000'
+set $wallpaper ~/.config/i3/wallpapers/bg.png
+set $lock 'swaylock -f -i $wallpaper'
 
 set $left h
 set $down j
@@ -23,8 +27,9 @@ set $menu "rofi -combi-modi drun,window,run -show combi -modi combi"
 ### Idle configuration
 exec swayidle -w \
         timeout 300 $lock \
-        timeout 600 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
+        timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+        timeout 1800 'systemctl suspend' \
+        lock $lock \
         before-sleep $lock
 
 
@@ -40,7 +45,7 @@ exec swayidle -w \
 
     bindsym $mod+d exec $menu
     bindsym $mod+Return exec $term
-    bindsym $mod+Tab exec "rofi -show window"
+    bindsym Alt+Tab exec "rofi -show window"
 
     # Layout stuff:
     bindsym $mod+b splith
@@ -67,14 +72,21 @@ exec swayidle -w \
     bindsym $mod+Shift+minus move scratchpad
     bindsym $mod+minus scratchpad show
 
+    # Screenshot
+    bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
+
+    bindsym $mod+Tab workspace back_and_forth
+    bindsym $mod+p exec --locked kanshi
+
 
 # Window rules
-    for_window [shell="xwayland"] title_format "[X] %title "
-    for_window [class="^.*"] border pixel 4
-    for_window [class="Pavucontrol"] floating enable
-    for_window [window_role="pop-up"] floating enable
-    for_window [window_role="task_dialog"] floating enable
-    for_window [class="Blueman-manager"] floating enable
+    for_window [shell="xwayland"] title_format "[X] %title"
+    for_window [app_id="pavucontrol"] floating enable, move position center;
+    for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable, move position center;
+    # for_window [window_type="dialog|toolbar|splash|menu|dropdown_menu|popup_menu|tooltip|notification"] floating enable
+    for_window [app_id="blueman-manager"] floating enable, move position center;
+    for_window [app_id="wdisplays"] floating enable, move position center;
+    for_window [app_id=mpv] sticky enable
 
 # Includes
     # Workspace keybind
@@ -97,6 +109,6 @@ exec swayidle -w \
 
     # include /etc/sway/config.d/*
 
-exec_always pkill kanshi; exec kanshi
-exec_always autotiling
-exec_always ~/.config/waybar/waybar.sh
+exec_always pkill kanshi; exec kanshi > /tmp/kanshi.log 2>&1
+exec_always autotiling > /tmp/autotiling.log 2>&1
+# exec_always ~/.config/waybar/waybar.sh

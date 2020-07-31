@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: Fira Sans, Font Awesome, Helvetica, Arial, sans-serif;
     font-size: 13px;
     min-height: 0;
 }
@@ -11,9 +11,13 @@ window#waybar {
     color: white;
 }
 
+#workspaces {
+    font-weight: bold;
+}
+
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button {
-    padding: 0 10px;
+    padding: 0 8px;
     background: transparent;
     color: white;
     border-bottom: 3px solid transparent;
@@ -22,6 +26,11 @@ window#waybar {
 #workspaces button.focused {
     background: #64727D;
     border-bottom: 3px solid white;
+}
+
+#workspaces button.urgent {
+    background: #64727D;
+    border-bottom: 3px solid red;
 }
 
 #mode {
@@ -80,7 +89,7 @@ window#waybar {
 }
 
 #pulseaudio.muted {
-    color: grey;
+    color: white;
 }
 
 #custom-spotify {
@@ -91,8 +100,4 @@ window#waybar {
 }
 
 #idle_inhibitor {
-}
-
-#idle_inhibitor.activated {
-    color: #2d3436;
 }

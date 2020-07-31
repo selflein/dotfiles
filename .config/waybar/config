@@ -2,11 +2,12 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar at the bottom of your screen
     "height": 30, // Waybar height
+    // "margin": "5",
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "battery", "clock"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -37,6 +38,7 @@
         "spacing": 10
     },
     "clock": {
+        "format": "{:%d.%m.%Y, %H:%M}",
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -77,14 +79,14 @@
 	    "on-click-left": "nmtui"
     },
     "pulseaudio": {
-        //"scroll-step": 1,
+        "scroll-step": 5,
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-muted": "",
         "format-icons": {
             "headphones": "",
-            "handsfree": "",
-            "headset": "",
+            "handsfree": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",

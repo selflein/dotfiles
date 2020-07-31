@@ -3,7 +3,6 @@ profile dell-external {
     output "Dell Inc. Dell S2417DG VGGY4765071U"  scale 1
 }
 
-{
-    output eDP-1 enable
-    output "Dell Inc. Dell S2417DG VGGY4765071U" mode 2560x1440@59.951000Hz position 0,0  scale 1
+profile laptop {
+    output eDP-1 enable scale 1.5
 }

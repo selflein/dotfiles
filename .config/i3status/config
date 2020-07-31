@@ -1,14 +1,7 @@
-# i3status configuration file.
-# see "man i3status" for documentation.
-
-# It is important that this file is edited as UTF-8.
-# The following line should contain a sharp s:
-# ß
-# If the above line is not correctly displayed, fix your editor first!
 
 general {
 	output_format = "i3bar"
-    colors = true
+    colors = false
     interval = 1
 	separator = false
 }
@@ -45,7 +38,7 @@ battery all {
 }
 
 tztime local {
-        format = "%d.%m.%Y \ \  %H:%M"
+        format = "%d.%m.%Y, %H:%M"
 }
 
 load {
@@ -58,7 +51,7 @@ disk "/" {
 
 volume master {
         format = " %volume"
-        format_muted = ""
+        format_muted = ""
         device = "default"
         mixer = "Master"
         mixer_idx = 0

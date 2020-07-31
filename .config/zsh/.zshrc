@@ -6,7 +6,7 @@ zinit wait lucid for \
     agkozak/zsh-z
     # marzocchi/zsh-notify \
 
-zinit ice depth=1 atload'!source ~/.p10k.zsh' lucid nocd
+zinit ice depth=1 atload'!source ~/.config/zsh/.p10k.zsh' lucid nocd
 zinit light romkatv/powerlevel10k
 
 zinit wait lucid for \
@@ -21,7 +21,7 @@ zinit wait lucid for \
 
 
 ## History file configuration
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+[ -z "$HISTFILE" ] && HISTFILE="$HOME/.config/.zsh_history"
 HISTSIZE=50000
 SAVEHIST=50000
 
@@ -48,5 +48,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore .cache -g ""'
 
 alias ls='ls --color=auto'
 alias open='xdg-open'
-alias fd='fdfind'
+alias tmux='tmux -f ~/.config/tmux/tmux.conf'
+#alias fd='fd-find'
 
