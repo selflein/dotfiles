@@ -3,7 +3,9 @@
   border-color: #2e343f;
   text-color: #8ca0aa;
   spacing: 0;
-  width: 512px;
+  width: 30%;
+  font: "Fira Sans Regular 10";
+  y-offset: -20%;
 }
 
 inputbar {

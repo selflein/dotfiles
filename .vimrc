@@ -41,6 +41,9 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 
+" Global clipboard
+set clipboard=unnamedplus
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
