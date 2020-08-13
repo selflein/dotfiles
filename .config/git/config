@@ -3,3 +3,4 @@
 	email = elflein.sven@googlemail.com
 [core]
 	editor = nvim
+    autocrlf = input
