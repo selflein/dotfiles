@@ -24,9 +24,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" set termguicolors
-set clipboard+=unnamedplus
-
 " Sets how many lines of history VIM has to remember
 set history=500
 

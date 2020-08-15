@@ -1,3 +1,4 @@
 .config/zsh/.zsh_history
 .config/zsh/.zcompdump
+.config/zsh/.zshenv
 .config/nvim/.netrwhist

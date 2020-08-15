@@ -16,4 +16,3 @@ fi
 export ZDOTDIR=~/.config/zsh
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORMTHEME=qt5ct
-# source "$HOME/.config/sway/env"

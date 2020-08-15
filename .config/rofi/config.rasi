@@ -44,7 +44,7 @@ configuration {
 /*	fullscreen: false;*/
 /*	fake-transparency: false;*/
     theme: "slate";
-	dpi: 1;
+	dpi: 0;
 /*	threads: 0;*/
 /*	scrollbar-width: 8;*/
 /*	scroll-method: 0;*/
