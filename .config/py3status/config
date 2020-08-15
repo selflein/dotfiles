@@ -9,6 +9,7 @@ general {
     color_degraded = '#FFFFFF'
 }
 
+order += "dpms"
 order += "volume_status"
 order += "battery all"
 order += "tztime local"
@@ -57,3 +58,9 @@ volume_status {
     on_click 1 = "exec pavucontrol"
 }
 
+dpms {
+    icon_off = "   "
+    icon_on = "   "
+    button_toggle = 1
+    button_off = 2
+}
