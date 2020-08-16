@@ -1,7 +1,6 @@
 # DPMS power management (standby, suspend, poweroff)
 # `xset -dpms` to deactivate, `xset +dpms` to activate
 xset dpms 600 7200 0
-xset -dpms
 
 # Disable screen saver
 xset s off
