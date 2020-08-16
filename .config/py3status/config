@@ -9,6 +9,7 @@ general {
     color_degraded = '#FFFFFF'
 }
 
+order += "do_not_disturb"
 order += "dpms"
 order += "volume_status"
 order += "battery all"
@@ -59,8 +60,14 @@ volume_status {
 }
 
 dpms {
-    icon_off = "   "
-    icon_on = "   "
+    icon_off = " "
+    icon_on = " "
     button_toggle = 1
     button_off = 2
+}
+
+do_not_disturb {
+    format = " [\?if=state |]"
+    state = False
+    pause = True
 }
