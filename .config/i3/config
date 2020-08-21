@@ -209,7 +209,7 @@ bar {
 }
 
 bindsym $mod+Shift+s sticky toggle
-bindsym $mod+p exec "autorandr -c --skip-options crtc,gamma"
+bindsym $mod+p exec --no-startup-id "autorandr -c --skip-options crtc,gamma"
 bindsym $mod+Print exec "flameshot gui"
 
 for_window [class="^.*"] border pixel 1
@@ -220,7 +220,6 @@ for_window [class="Blueman-manager"] floating enable, move center;
 for_window [class="copyq"] floating enable
 
 # autostart
-exec --no-startup-id nm-applet
 exec --no-startup-id libinput-gestures
 exec --no-startup-id redshift
 exec --no-startup-id nextcloud 
@@ -232,3 +231,4 @@ exec --no-startup-id "compton -b --config ~/.config/compton.conf"
 
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id autorandr -c
+exec --no-startup-id "nm-applet --tray"
