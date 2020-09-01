@@ -49,7 +49,8 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 export FZF_ALT_C_COMMAND='fd --hidden --no-ignore-vcs --full-path --type directory --follow --exclude {.git,.cache}'
 
 alias ls='ls --color=auto'
-alias open='xdg-open'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 alias ssh='env TERM=xterm-256color ssh'
+
+open() { xdg-open "$@" &> /dev/null &; disown; }
 
