@@ -11,7 +11,7 @@
 * `i3`
 * `i3lock` (installed with `i3` using apt)
 * `dunst` (installed with `i3` using apt)
-* `autorandr`
+* `autorandr` (Get from [github](https://github.com/phillipberndt/autorandr) then run `make install-launcher`)
 * `redshift`
 * `rofi`
 * `picom`
@@ -42,8 +42,9 @@ Set themes for GTK and QT with the following packages
 #### Keyboard setup
 Switching between keyboard layouts with pressing both shifts and swapping ESC and Caps Lock
 ```
-localectl set-x11-keymap us,de "" "" caps:escape,grp:shifts_toggle
+localectl set-x11-keymap us,de "" "" escape:swapcaps,grp:shifts_toggle
 ```
+Alternatively exchange `caps:escape` with `caps:super` to get a additional super key inplace of caps lock. Use together with `xcape` to get combined functionality of escape on single press and super when pressed together with other key.
 
 ### Other tools
 * [fd](https://github.com/sharkdp/fd) (Simple alternative to `find`)
