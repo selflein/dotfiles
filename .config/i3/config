@@ -42,8 +42,9 @@ set $locker i3lock -c 555555
 floating_modifier Mod4
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id gnome-terminal
-bindsym $mod+Shift+Return exec --no-startup-id "gnome-terminal --role=floating"
+set $terminal gnome-terminal --hide-menubar
+bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+Return exec --no-startup-id "$terminal --role=floating"
 for_window [window_role="floating"] floating enable
 
 # kill focused window
