@@ -19,10 +19,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'edkolev/tmuxline.vim'
 
-" Completion from Jetbrains products
-Plug 'beeender/Comrade'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 call plug#end()
 
 let g:deoplete#enable_at_startup = 1

@@ -19,6 +19,7 @@ zinit wait lucid for \
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+autoload -Uz bashcompinit && bashcompinit
 
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.config/.zsh_history"

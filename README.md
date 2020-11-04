@@ -16,11 +16,12 @@
 * `rofi`
 * `picom`
 * `alacritty`
+* `py3status` (installed via `pip`)
+* `autotiliing`
 
 
 #### Optional desktop utilities
 * `nm-applet` (Managing network configuration from tray)
-* `pasystray` (Volume control from tray)
 * `blueman` (Manage bluetooth connections with tray applet)
 * `copyq` (Clipboard manager)
 
