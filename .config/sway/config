@@ -18,7 +18,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term gnome-terminal
 
 # Application Launcher
 #set $menu "wofi --dmenu -I -m -i"

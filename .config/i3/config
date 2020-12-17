@@ -4,9 +4,9 @@ default_border pixel 1
 workspace_auto_back_and_forth yes
  
 # class                 border  backgr. text    indicator child_border
-client.focused          #000000 #ffffff #000000 #888888   #ffffff
-client.focused_inactive #000000 #ffffff #000000 #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.focused          #aaaaaa #ffffff #000000 #888888   #ffffff
+client.focused_inactive #aaaaaa #ffffff #000000 #484e50   #5f676a
+client.unfocused        #aaaaaa #222222 #999999 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
  
@@ -217,7 +217,7 @@ bar {
     position top
 	separator_symbol "  "
 	tray_output primary
-    font pango:Fira Sans, FontAwesome 12
+    font pango:Fira Sans, FontAwesome 11
     status_command py3status
 }
 
@@ -243,5 +243,6 @@ exec --no-startup-id udiskie
 exec --no-startup-id "nm-applet --tray"
 exec --no-startup-id "picom -b --config ~/.config/compton.conf"
 exec --no-startup-id "autorandr-launcher --daemonize"
+exec --no-startup-id "nitrogen --restore"
 
 exec_always --no-startup-id autotiling

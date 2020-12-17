@@ -32,7 +32,7 @@ configuration {
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
 	combi-modi: "window,run,drun,ssh";
-	matching: "fuzzy";
+	matching: "glob";
 /*	tokenize: true;*/
 /*	m: "-5";*/
 /*	line-margin: 2;*/
