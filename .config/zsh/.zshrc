@@ -1,10 +1,10 @@
 source ~/.zinit/bin/zinit.zsh
 
 # Install xdotool, notify-osd and wmctrl for `zsh-notify` to work
-zinit wait lucid for \
+zinit wait silent for \
     Aloxaf/fzf-tab \
-    agkozak/zsh-z \
-    marzocchi/zsh-notify \
+    agkozak/zsh-z
+    # marzocchi/zsh-notify \
 
 zinit ice depth=1 atload'!source ~/.config/zsh/.p10k.zsh' lucid nocd
 zinit light romkatv/powerlevel10k
@@ -52,6 +52,7 @@ export FZF_ALT_C_COMMAND='fd --hidden --no-ignore-vcs --full-path --type directo
 alias ls='ls --color=auto'
 alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 alias ssh='env TERM=xterm-256color ssh'
+alias vim='nvim'
 
 open() { xdg-open "$@" &> /dev/null &; disown; }
 

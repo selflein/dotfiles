@@ -1,6 +1,7 @@
 profile dell-external {
     output eDP-1 disable
     output "Dell Inc. Dell S2417DG VGGY4765071U"  scale 1
+    output "Philips Consumer Electronics Company 220P4LPY AU41343000755" scale 1
 }
 
 profile laptop {

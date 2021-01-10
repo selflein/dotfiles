@@ -11,7 +11,7 @@ default_orientation auto
 
 set $mod Mod4
 set $wallpaper ~/.config/i3/wallpapers/bg.png
-set $lock 'swaylock -f -i $wallpaper'
+set $lock 'swaylock -f -i $wallpaper
 
 set $left h
 set $down j
@@ -21,7 +21,7 @@ set $right l
 set $term gnome-terminal
 
 # Application Launcher
-#set $menu "wofi --dmenu -I -m -i"
+# set $menu "wofi --dmenu -I -m -i"
 set $menu "rofi -combi-modi drun,window,run -show combi -modi combi"
 
 ### Idle configuration
@@ -38,13 +38,16 @@ exec swayidle -w \
 
     bindsym $mod+Shift+q kill
 
-
     # reload the configuration file
     bindsym $mod+Shift+r reload
 
-
     bindsym $mod+d exec $menu
     bindsym $mod+Return exec $term
+    
+    # Floating terminal
+    bindsym $mod+Shift+Return exec '$term --title=floating'
+    for_window [title="floating"] floating enable
+
     bindsym Alt+Tab exec "rofi -show window"
 
     # Layout stuff:
@@ -67,6 +70,7 @@ exec swayidle -w \
 
     # move focus to the parent container
     bindsym $mod+a focus parent
+    bindsym $mod+c focus child
 
     # Scratchpad
     bindsym $mod+Shift+minus move scratchpad
@@ -76,7 +80,7 @@ exec swayidle -w \
     bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
 
     bindsym $mod+Tab workspace back_and_forth
-    bindsym $mod+p exec --locked kanshi
+    bindsym $mod+p exec --locked "kanshi"
 
 
 # Window rules
@@ -107,8 +111,3 @@ exec swayidle -w \
     # scripts to be exectuted at startup
     include autostart
 
-    # include /etc/sway/config.d/*
-
-exec_always pkill kanshi; exec kanshi > /tmp/kanshi.log 2>&1
-exec_always autotiling > /tmp/autotiling.log 2>&1
-# exec_always ~/.config/waybar/waybar.sh

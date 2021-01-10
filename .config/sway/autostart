@@ -2,4 +2,8 @@ exec mako > /tmp/mako.log 2>&1
 exec "nm-applet --indicator"
 exec nextcloud
 exec libinput-gestures
+exec "source ~/config/sway/env"
 
+exec_always pkill kanshi; exec kanshi > /tmp/kanshi.log 2>&1
+exec_always autotiling > /tmp/autotiling.log 2>&1
+# exec_always ~/.config/waybar/waybar.sh

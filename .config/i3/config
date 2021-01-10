@@ -82,7 +82,6 @@ bindsym $mod+Shift+Right move right
 # split in horizontal orientation
 bindsym $mod+b split h
 
-
 # split in vertical orientation
 bindsym $mod+v split v
 
@@ -158,6 +157,10 @@ workspace $ws2 output primary
 workspace $ws3 output primary
 workspace $ws4 output primary
 workspace $ws5 output primary
+
+# Moving entire workspaces
+bindsym $mod+Shift+Ctrl+h move workspace to output left
+bindsym $mod+Shift+Ctrl+l move workspace to output right
 
 
 # reload the configuration file
