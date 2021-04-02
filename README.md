@@ -54,23 +54,3 @@ Alternatively exchange `caps:escape` with `caps:super` to get a additional super
 * [Zinit](https://github.com/zdharma/zinit) (Plugin manager for zsh)
 * [vim-plug](https://github.com/junegunn/vim-plug) (Plugin manager for vim)
 * [TPM](https://github.com/tmux-plugins/tpm) (Pugin manager for tmux)
-
----
-
-### For wayland/sway setup
-Currently not really using it because of xwayland issues with scaling.
-* `sway`
-* `waybar`
-* `kanshi`
-* `wdisplays`
-* `mako`
-* `autotiling` (via python)
-* `swayidle`
-* `swaylock`
-* `rofi`
-* `alacritty`
-* `slurp`
-* `grim`
-* `swappy`
-* `clipman`
-

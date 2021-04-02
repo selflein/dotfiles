@@ -1,5 +1,0 @@
-# waybar config
-
-bar {
-    swaybar_command waybar
-}

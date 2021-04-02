@@ -1,7 +1,6 @@
 focus_follows_mouse no
 hide_edge_borders smart
 default_border pixel 1
-workspace_auto_back_and_forth yes
  
 # class                 border  backgr. text    indicator child_border
 client.focused          #aaaaaa #ffffff #000000 #888888   #ffffff
@@ -220,7 +219,7 @@ bar {
     position top
 	separator_symbol "  "
 	tray_output primary
-    font pango:Fira Sans, FontAwesome 11
+    font pango:Fira Sans, FontAwesome
     status_command py3status
 }
 
@@ -236,16 +235,18 @@ for_window [class="Blueman-manager"] floating enable, move center;
 for_window [class="copyq"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
 
+assign [class="Code"] $ws2
+
 # autostart
 exec --no-startup-id libinput-gestures
-exec --no-startup-id redshift-gtk
+exec --no-startup-id gammastep
 exec --no-startup-id nextcloud 
 exec --no-startup-id copyq
 exec --no-startup-id dunst
+exec --no-startup-id mpris-proxy
 exec --no-startup-id udiskie
 exec --no-startup-id "nm-applet --tray"
 exec --no-startup-id "picom -b --config ~/.config/compton.conf"
-exec --no-startup-id "autorandr-launcher --daemonize"
 exec --no-startup-id "nitrogen --restore"
 
 exec_always --no-startup-id autotiling
