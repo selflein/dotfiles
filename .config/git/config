@@ -6,3 +6,5 @@
 	autocrlf = input
 [pull]
     ff = only
+[init]
+    defaultBranch = main

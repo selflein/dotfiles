@@ -16,7 +16,7 @@ xset dpms 600 7200 0
 xset s off
 
 # Keyboard autorepeat delay (first value) and rate (second value)
-xset r rate 300 30 
+xset r rate 200 40 
 
 # Disable bell
 xset b off

@@ -3,9 +3,9 @@ hide_edge_borders smart
 default_border pixel 1
  
 # class                 border  backgr. text    indicator child_border
-client.focused          #aaaaaa #ffffff #000000 #888888   #ffffff
-client.focused_inactive #aaaaaa #ffffff #000000 #484e50   #5f676a
-client.unfocused        #aaaaaa #222222 #999999 #292d2e   #222222
+client.focused          #ffffff #ffffff #000000 #888888   #ffffff
+client.focused_inactive #ffffff #ffffff #000000 #484e50   #5f676a
+client.unfocused        #222222 #222222 #999999 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
  
@@ -19,8 +19,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -43,7 +43,7 @@ floating_modifier Mod4
 # start a terminal
 set $terminal gnome-terminal --hide-menubar
 bindsym $mod+Return exec $terminal
-bindsym $mod+Shift+Return exec --no-startup-id "$terminal --role=floating"
+bindsym $mod+Ctrl+Return exec --no-startup-id "$terminal --role=floating"
 for_window [window_role="floating"] floating enable
 
 # kill focused window
@@ -86,6 +86,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -111,6 +112,9 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
+# Focus last urgent window
+bindsym $mod+o [urgent=latest] focus
+
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
 set $ws2 "2"
@@ -121,7 +125,6 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "T"
 
 
 # switch to workspace
@@ -134,7 +137,6 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+t workspace $ws10
 
 
 # move focused container to workspace
@@ -147,7 +149,6 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+t move container to workspace $ws10
 
 
 # Assign first 5 workspaces to primary screen
@@ -223,6 +224,14 @@ bar {
     status_command py3status
 }
 
+# Notes 
+bindsym $mod+i [class="^Zettlr"] scratchpad show
+for_window [class="^Zettlr"] floating enable, resize set 35 ppt 50 ppt, move position center, move scratchpad
+
+# Dropdown terminal
+bindsym $mod+Shift+Return [window_role="^dropdown"] scratchpad show
+for_window [window_role="^dropdown"] floating enable, resize set 30 ppt 30 ppt, move position 35 ppt 1 ppt, move scratchpad
+
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+p exec --no-startup-id "autorandr -c --skip-options crtc,gamma"
 bindsym $mod+Print exec "flameshot gui"
@@ -235,18 +244,20 @@ for_window [class="Blueman-manager"] floating enable, move center;
 for_window [class="copyq"] floating enable
 for_window [class="Org.gnome.Nautilus"] floating enable
 
-assign [class="Code"] $ws2
+# assign [class="Code"] $ws2
 
 # autostart
+exec --no-startup-id "$terminal --role=dropdown -e tmux"
 exec --no-startup-id libinput-gestures
-exec --no-startup-id gammastep
+exec --no-startup-id "redshift -l 48:11.5"
+exec --no-startup-id flameshot
 exec --no-startup-id nextcloud 
 exec --no-startup-id copyq
 exec --no-startup-id dunst
-exec --no-startup-id mpris-proxy
 exec --no-startup-id udiskie
 exec --no-startup-id "nm-applet --tray"
-exec --no-startup-id "picom -b --config ~/.config/compton.conf"
+exec --no-startup-id "picom -b --config ~/.config/picom.conf"
 exec --no-startup-id "nitrogen --restore"
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 exec_always --no-startup-id autotiling

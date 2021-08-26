@@ -9,8 +9,7 @@ general {
     color_degraded = '#FFFFFF'
 }
 
-order += "do_not_disturb"
-order += "dpms"
+order += "frame options"
 order += "volume_status"
 order += "battery all"
 order += "tztime local"
@@ -38,6 +37,13 @@ battery all {
 	integer_battery_capacity = true
 }
 
+battery_level all {
+    battery_id = "all"
+    format = "{icon} {percent}"
+	charging_character = ""
+}
+
+
 tztime local {
     format = "%d.%m.%Y, %H:%M"
 }
@@ -59,15 +65,21 @@ volume_status {
     on_click 1 = "exec pavucontrol"
 }
 
-dpms {
-    icon_off = " "
-    icon_on = " "
-    button_toggle = 1
-    button_off = 2
+frame options {
+    format = '{output}{button}'
+    format_separator = ' '  # have space instead of usual i3bar separator
+
+    dpms {
+        icon_off = " "
+        icon_on = " "
+        button_toggle = 1
+        button_off = 2
+    }
+
+    do_not_disturb {
+        format = " [\?if=state |]"
+        state = False
+        pause = True
+    }
 }
 
-do_not_disturb {
-    format = " [\?if=state |]"
-    state = False
-    pause = True
-}
