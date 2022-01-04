@@ -226,11 +226,11 @@ bar {
 
 # Notes 
 bindsym $mod+i [class="^Zettlr"] scratchpad show
-for_window [class="^Zettlr"] floating enable, resize set 35 ppt 50 ppt, move position center, move scratchpad
+for_window [class="^Zettlr"] floating enable, resize set 50 ppt 70 ppt, move position center, move scratchpad
 
 # Dropdown terminal
 bindsym $mod+Shift+Return [window_role="^dropdown"] scratchpad show
-for_window [window_role="^dropdown"] floating enable, resize set 30 ppt 30 ppt, move position 35 ppt 1 ppt, move scratchpad
+for_window [window_role="^dropdown"] floating enable, resize set 60 ppt 40 ppt, move position 20 ppt 1 ppt, move scratchpad
 
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+p exec --no-startup-id "autorandr -c --skip-options crtc,gamma"
@@ -261,3 +261,4 @@ exec --no-startup-id "nitrogen --restore"
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
 exec_always --no-startup-id autotiling
+exec_always --no-startup-id autorandr -c

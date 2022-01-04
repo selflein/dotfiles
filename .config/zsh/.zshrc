@@ -1,4 +1,14 @@
-source ~/.zinit/bin/zinit.zsh
+source ~/.local/share/zinit/zinit.git/zinit.zsh
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
 
 # Install xdotool, notify-osd and wmctrl for `zsh-notify` to work
 zinit wait silent for \
@@ -11,11 +21,14 @@ zinit light romkatv/powerlevel10k
 
 zinit wait lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
+        zdharma-continuum/fast-syntax-highlighting \
     blockf atpull"zinit creinstall -q ." \
         zsh-users/zsh-completions \
     atload"!_zsh_autosuggest_start" \
         zsh-users/zsh-autosuggestions
+
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -55,4 +68,5 @@ alias ssh='env TERM=xterm-256color ssh'
 alias vim='nvim'
 
 open() { xdg-open "$@" &> /dev/null &; disown; }
+
 
